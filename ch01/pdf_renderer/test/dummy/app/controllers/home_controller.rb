@@ -7,4 +7,8 @@ class HomeController < ApplicationController
     end
   end
 
+  def another
+    render :pdf => "contents", :template => "home/index"
+  end
+
 end
