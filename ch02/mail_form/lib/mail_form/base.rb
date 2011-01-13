@@ -20,6 +20,14 @@ module MailForm
       self._attributes += names
     end
 
+    def deliver
+      if valid?
+        MailForm::Notifier.contact(self).deliver
+      else
+        false
+      end
+    end
+
     def attributes
       self._attributes.inject({}) do |hash, attr|
         hash[attr.to_s] = send(attr)
